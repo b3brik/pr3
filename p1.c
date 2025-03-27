@@ -7,12 +7,15 @@ void processNumbers(int *x, int *y) {
 
 int main() {
     int a, b;
-    printf("Введите два ЦЕЛЫХ числа: ");
-    scanf("%d %d", &a, &b);
-    
-    int *ptrA = &a, *ptrB = &b;
-    processNumbers(ptrA, ptrB);
+    printf("Введите два целых числа: ");
+    if (scanf("%d %d", &a, &b) != 2) {
+        printf("Ошибка ввода!\n");
+        return 1;
+    }
+
+    processNumbers(&a, &b);
     
     printf("Вывод: a = %d, b = %d\n", a, b);
     return 0;
 }
+
