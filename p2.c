@@ -8,12 +8,15 @@ void swapValues(double *p1, double *p2) {
 }
 
 int main() {
-    double *num1 = (double *)malloc(sizeof(double));
-    double *num2 = (double *)malloc(sizeof(double));
-    double *num3 = (double *)malloc(sizeof(double));
+    double *num1 = malloc(sizeof(double));
+    double *num2 = malloc(sizeof(double));
+    double *num3 = malloc(sizeof(double));
     
     if (!num1 || !num2 || !num3) {
         printf("Ошибка выделения памяти\n");
+        free(num1);
+        free(num2);
+        free(num3);
         return 1;
     }
     
