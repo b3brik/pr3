@@ -21,9 +21,12 @@ void processArray(int *arr, int size) {
 int main() {
     int n;
     printf("Введите размер массива: ");
-    scanf("%d", &n);
+    if (scanf("%d", &n) != 1 || n <= 0) {
+        printf("Ошибка ввода!\n");
+        return 1;
+    }
     
-    int *arr = (int *)malloc(n * sizeof(int));
+    int *arr = malloc(n * sizeof(int));
     if (!arr) {
         printf("Ошибка выделения памяти\n");
         return 1;
@@ -31,7 +34,11 @@ int main() {
     
     printf("Введите %d элементов массива: ", n);
     for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
+        if (scanf("%d", &arr[i]) != 1) {
+            printf("Ошибка ввода!\n");
+            free(arr);
+            return 1;
+        }
     }
     
     processArray(arr, n);
